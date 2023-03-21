@@ -1,9 +1,9 @@
 import ProjectCard from './components/ProjectCard'
 
-export default function Page() {
+export default function page() {
     return (
         <>
-            <button className="flex items-center uppercase w-fit font-semibold p-2 border-2 text-white bg-black hover:border-black hover:bg-gray-900">
+            <button className="flex items-center uppercase w-fit font-semibold p-2 border-2 text-white bg-black hover:bg-gray-600">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"

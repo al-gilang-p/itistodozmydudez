@@ -1,11 +1,12 @@
 'use client'
 import { Popover } from '@headlessui/react'
+import Link from 'next/link'
 
-const ProjectCard = ({ title }) => {
+export default function ProjectCard({ title }) {
     return (
         <div className="flex items-center justify-between border border-black mt-3 p-3">
             <h3>{title}</h3>
-            <div className="flex">
+            <div className="flex items-center">
                 <h3 className="text-gray-500">0/0</h3>
                 <input
                     type="checkbox"
@@ -16,15 +17,37 @@ const ProjectCard = ({ title }) => {
                 <label htmlFor="checkCompleted" className="mr-3">
                     Mark As Completed
                 </label>
-                <Popover className="relative">
-                    <Popover.Button>Solutions</Popover.Button>
+                <Popover>
+                    <Popover.Button>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="w-6 h-6"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M10.5 6a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm0 6a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm0 6a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    </Popover.Button>
 
                     <Popover.Panel className="absolute z-10">
-                        <div className="grid grid-cols-2">
-                            <a href="/analytics">Analytics</a>
-                            <a href="/engagement">Engagement</a>
-                            <a href="/security">Security</a>
-                            <a href="/integrations">Integrations</a>
+                        <div className="flex flex-col border border-black bg-white text-center">
+                            <Link
+                                className="hover:bg-black hover:text-white p-2"
+                                href="/project"
+                            >
+                                Edit
+                            </Link>
+                            <hr className="border-black" />
+                            <Link
+                                className="hover:bg-black hover:text-white p-2"
+                                href="/project"
+                            >
+                                Delete
+                            </Link>
                         </div>
                     </Popover.Panel>
                 </Popover>
@@ -32,5 +55,3 @@ const ProjectCard = ({ title }) => {
         </div>
     )
 }
-
-export default ProjectCard
