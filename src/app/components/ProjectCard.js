@@ -1,3 +1,6 @@
+'use client'
+import { Popover } from '@headlessui/react'
+
 const ProjectCard = ({ title }) => {
     return (
         <div className="flex items-center justify-between border border-black mt-3 p-3">
@@ -13,19 +16,18 @@ const ProjectCard = ({ title }) => {
                 <label htmlFor="checkCompleted" className="mr-3">
                     Mark As Completed
                 </label>
+                <Popover className="relative">
+                    <Popover.Button>Solutions</Popover.Button>
 
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-6 h-6"
-                >
-                    <path
-                        fillRule="evenodd"
-                        d="M10.5 6a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm0 6a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm0 6a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"
-                        clipRule="evenodd"
-                    />
-                </svg>
+                    <Popover.Panel className="absolute z-10">
+                        <div className="grid grid-cols-2">
+                            <a href="/analytics">Analytics</a>
+                            <a href="/engagement">Engagement</a>
+                            <a href="/security">Security</a>
+                            <a href="/integrations">Integrations</a>
+                        </div>
+                    </Popover.Panel>
+                </Popover>
             </div>
         </div>
     )
