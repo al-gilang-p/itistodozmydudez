@@ -8,9 +8,20 @@ export async function GET() {
 }
 
 export async function POST() {
-    const project = await prisma.project.create({
-        data: {
-            title: 'Grocery List',
-        },
-    })
+    async function send() {
+        const project = await prisma.project.create({
+            data: {
+                title: 'Grocery List',
+            },
+        })
+    }
+    send()
+        .then(async () => {
+            await prisma.$disconnect()
+        })
+        .catch(async (e) => {
+            console.error(e)
+            await prisma.$disconnect()
+            process.exit(1)
+        })
 }
