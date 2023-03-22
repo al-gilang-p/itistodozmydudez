@@ -33,7 +33,7 @@ export default function ProjectCard({ title }) {
                         </svg>
                     </Popover.Button>
 
-                    <Popover.Panel className="absolute z-10">
+                    <Popover.Panel className="absolute z-auto">
                         <div className="flex flex-col border border-black bg-white text-center">
                             <Link
                                 className="hover:bg-black hover:text-white p-2"

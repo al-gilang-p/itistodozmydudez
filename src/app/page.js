@@ -1,9 +1,10 @@
+import PrimaryButton from './components/PrimaryButton'
 import ProjectCard from './components/ProjectCard'
 
 export default function page() {
     return (
         <>
-            <button className="flex items-center uppercase w-fit font-semibold p-2 border-2 text-white bg-black hover:bg-gray-600">
+            <PrimaryButton url={'/project'}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -17,7 +18,7 @@ export default function page() {
                     />
                 </svg>
                 New Project
-            </button>
+            </PrimaryButton>
 
             <div className="w-full flex justify-between items-center my-2">
                 <div>
