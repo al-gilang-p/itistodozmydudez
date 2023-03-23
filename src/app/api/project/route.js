@@ -4,24 +4,23 @@ import { NextResponse } from 'next/server'
 const prisma = new PrismaClient()
 
 export async function GET() {
-    return NextResponse.json({ name: 'John Doe' })
+    try {
+        const project = await prisma.project.findMany({})
+        return NextResponse.json({ project })
+    } catch (err) {
+        return NextResponse.json({ error: err })
+    }
 }
 
 export async function POST() {
-    async function send() {
+    try {
         const project = await prisma.project.create({
             data: {
                 title: 'Grocery List',
             },
         })
+        return NextResponse.json({ project })
+    } catch (err) {
+        return NextResponse.json({ error: err })
     }
-    send()
-        .then(async () => {
-            await prisma.$disconnect()
-        })
-        .catch(async (e) => {
-            console.error(e)
-            await prisma.$disconnect()
-            process.exit(1)
-        })
 }
