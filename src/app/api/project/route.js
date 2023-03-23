@@ -12,12 +12,11 @@ export async function GET() {
     }
 }
 
-export async function POST() {
+export async function POST(request) {
     try {
+        const req = await request.json()
         const project = await prisma.project.create({
-            data: {
-                title: 'Grocery List',
-            },
+            data: req,
         })
         return NextResponse.json({ project })
     } catch (err) {
