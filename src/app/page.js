@@ -1,5 +1,5 @@
-import PrimaryButton from './components/PrimaryButton'
-import ProjectCard from './components/ProjectCard'
+import PrimaryButton from '../components/PrimaryButton'
+import ProjectCard from '../components/ProjectCard'
 
 export default function page() {
     return (
