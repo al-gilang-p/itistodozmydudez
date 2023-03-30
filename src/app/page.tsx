@@ -1,7 +1,17 @@
 import PrimaryButton from '../components/PrimaryButton'
 import ProjectCard from '../components/ProjectCard'
+import { PrismaClient } from '@prisma/client'
 
-export default function page() {
+const prisma = new PrismaClient()
+
+async function getProject() {
+    const projects = await prisma.project.findMany({})
+    return projects
+}
+
+export default async function page() {
+
+    const projects = await getProject()
     return (
         <>
             <PrimaryButton url={'/project'}>
@@ -20,7 +30,7 @@ export default function page() {
                 New Project
             </PrimaryButton>
 
-            <div className="w-full flex justify-between items-center my-2">
+            <div className="w-full flex justify-between items-center my-3">
                 <div>
                     <input
                         type="text"
@@ -42,7 +52,11 @@ export default function page() {
             <hr className="border-black my-3" />
 
             <div>
-                <ProjectCard title={'Work Related'} />
+                {projects.map((project) => {
+                    return (
+                        <ProjectCard title={project.title} key={project.id} />
+                    )
+                })}
             </div>
         </>
     )
