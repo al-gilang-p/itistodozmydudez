@@ -1,5 +1,5 @@
+import Content from './Content'
 import PrimaryButton from '../components/PrimaryButton'
-import ProjectCard from '../components/ProjectCard'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -10,8 +10,10 @@ async function getProject() {
 }
 
 export default async function page() {
-
     const projects = await getProject()
+    // typescript workaround: Only plain objecs can be passed to client components from server components
+    const data = JSON.parse(JSON.stringify(projects))
+
     return (
         <>
             <PrimaryButton url={'/project'}>
@@ -30,34 +32,7 @@ export default async function page() {
                 New Project
             </PrimaryButton>
 
-            <div className="w-full flex justify-between items-center my-3">
-                <div>
-                    <input
-                        type="text"
-                        name="search-project"
-                        className="p-1 border border-black"
-                        placeholder="Search Project Here..."
-                    />
-                    <input
-                        type="checkbox"
-                        name="check-hide"
-                        id="checkHide"
-                        className="ml-5 mr-1"
-                    />
-                    <label htmlFor="checkHide">Hide Completed</label>
-                </div>
-                <span className="font-semibold text-gray-500">0 Projects</span>
-            </div>
-
-            <hr className="border-black my-3" />
-
-            <div>
-                {projects.map((project) => {
-                    return (
-                        <ProjectCard title={project.title} key={project.id} />
-                    )
-                })}
-            </div>
+            <Content projects={data} />
         </>
     )
 }

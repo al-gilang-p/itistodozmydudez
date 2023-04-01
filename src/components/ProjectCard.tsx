@@ -1,21 +1,21 @@
-'use client'
+"use client"
 import { Popover } from '@headlessui/react'
 import Link from 'next/link'
 
-export default function ProjectCard({ title }) {
+export default function ProjectCard({ ...props }) {
     return (
         <div className="flex items-center justify-between border border-black mt-3 p-3">
-            <h3>{title}</h3>
+            <h3>{props.title}</h3>
             <div className="flex items-center">
                 <h3 className="text-gray-500">0/0</h3>
                 <input
                     type="checkbox"
                     name="check-completed"
-                    id="checkCompleted"
+                    id={"check" + props.id}
                     className="ml-5 mr-1"
                 />
-                <label htmlFor="checkCompleted" className="mr-3">
-                    Mark As Completed
+                <label htmlFor={"check" + props.id}>
+                    Mark as Completed
                 </label>
                 <Popover>
                     <Popover.Button>
@@ -37,21 +37,21 @@ export default function ProjectCard({ title }) {
                         <div className="flex flex-col border border-black bg-white text-center">
                             <Link
                                 className="hover:bg-black hover:text-white p-2"
-                                href="/project"
+                                // @ts-expect-error
+                                href={"/project/" + props.id}
                             >
                                 Edit
                             </Link>
                             <hr className="border-black" />
-                            <Link
+                            <button
                                 className="hover:bg-black hover:text-white p-2"
-                                href="/project"
                             >
                                 Delete
-                            </Link>
+                            </button>
                         </div>
                     </Popover.Panel>
                 </Popover>
             </div>
-        </div>
+        </div >
     )
 }
