@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className="container mx-auto flex flex-col">
+            <body className="container mx-auto mb-4 flex flex-col">
                 <nav className="w-full p-5">
                     <Link
                         href={'/'}
