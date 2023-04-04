@@ -1,11 +1,12 @@
 import { PrismaClient } from '@prisma/client'
+import { NextApiRequest } from 'next'
 import { NextResponse } from 'next/server'
 
 // const prisma = new PrismaClient()
 
-export async function POST(request: Request) {
-    const res = await request.json()
-    return NextResponse.json({ request })
+export async function POST(request: NextApiRequest) {
+    const res = await request.body
+    return NextResponse.json({ res })
     // try {
     // const req = await request.json()
     // const project = await prisma.project.create({
