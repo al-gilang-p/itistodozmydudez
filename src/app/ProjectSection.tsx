@@ -1,14 +1,13 @@
 'use client'
-
 import { useState } from 'react'
 import ProjectList from './ProjectList'
 
-export default function Content({ projects }) {
+function Check({ projects }) {
     const [searchInput, setSearchInput] = useState('')
     const [isCompleted, setIsCompleted] = useState(false)
 
     return (
-        <>
+        <div>
             <div className="w-full flex justify-between items-center my-3">
                 <div>
                     <input
@@ -49,14 +48,14 @@ export default function Content({ projects }) {
                     Projects
                 </span>
             </div>
-
             <hr className="border-black my-3" />
-
             <ProjectList
                 projects={projects}
                 filter={searchInput}
                 completed={isCompleted}
             />
-        </>
+        </div>
     )
 }
+
+export default Check

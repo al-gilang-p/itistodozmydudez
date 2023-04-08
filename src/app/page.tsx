@@ -1,6 +1,6 @@
-import Content from './Content'
 import PrimaryButton from '../components/PrimaryButton'
 import { PrismaClient } from '@prisma/client'
+import ProjectSection from './ProjectSection'
 
 const prisma = new PrismaClient()
 
@@ -32,7 +32,7 @@ export default async function page() {
                 New Project
             </PrimaryButton>
 
-            <Content projects={data} />
+            <ProjectSection projects={data} />
         </>
     )
 }
