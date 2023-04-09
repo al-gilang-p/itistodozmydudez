@@ -18,7 +18,7 @@ export default async function handler(
                         title: title,
                     },
                 })
-                res.redirect(308, '/')
+                res.redirect(301, '/')
             } catch (err) {
                 res.status(500).send({ error: 'failed to post data' })
             }
