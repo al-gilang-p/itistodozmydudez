@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { Popover } from '@headlessui/react'
 import Link from 'next/link'
 
@@ -11,12 +11,10 @@ export default function ProjectCard({ ...props }) {
                 <input
                     type="checkbox"
                     name="check-completed"
-                    id={"check" + props.id}
+                    id={'check' + props.id}
                     className="ml-5 mr-1"
                 />
-                <label htmlFor={"check" + props.id}>
-                    Mark as Completed
-                </label>
+                <label htmlFor={'check' + props.id}>Mark as Completed</label>
                 <Popover>
                     <Popover.Button>
                         <svg
@@ -38,20 +36,18 @@ export default function ProjectCard({ ...props }) {
                             <Link
                                 className="hover:bg-black hover:text-white p-2"
                                 // @ts-expect-error
-                                href={"/project/" + props.id}
+                                href={'/projects/' + props.id}
                             >
                                 Edit
                             </Link>
                             <hr className="border-black" />
-                            <button
-                                className="hover:bg-black hover:text-white p-2"
-                            >
+                            <button className="hover:bg-black hover:text-white p-2">
                                 Delete
                             </button>
                         </div>
                     </Popover.Panel>
                 </Popover>
             </div>
-        </div >
+        </div>
     )
 }

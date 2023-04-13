@@ -9,35 +9,21 @@ export default async function handler(
 ) {
     const { method } = req
     const { id } = req.query
-    const { title } = req.body
 
     switch (method) {
-        case 'POST':
+        case 'PUT':
             try {
                 const project = await prisma.project.update({
                     where: {
                         id: Number(id),
                     },
                     data: {
-                        title: title,
+                        isCompleted: true,
                     },
                 })
                 res.redirect(301, '/')
             } catch (err) {
                 res.status(500).send({ error: 'failed to update data' })
-            }
-            break
-
-        case 'DELETE':
-            try {
-                const project = await prisma.project.delete({
-                    where: {
-                        id: Number(id),
-                    },
-                })
-                res.redirect(308, '/')
-            } catch (err) {
-                res.status(500).send({ error: 'failed to delete data' })
             }
             break
     }
