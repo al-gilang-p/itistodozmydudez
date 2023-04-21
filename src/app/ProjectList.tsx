@@ -18,6 +18,7 @@ export default function ProjectList({ projects, filter, completed }) {
                               <ProjectCard
                                   title={project.title}
                                   id={project.id}
+                                  isCompleted={project.isCompleted}
                               />
                           </li>
                       ))
@@ -30,6 +31,7 @@ export default function ProjectList({ projects, filter, completed }) {
                               <ProjectCard
                                   title={project.title}
                                   id={project.id}
+                                  isCompleted={project.isCompleted}
                               />
                           </li>
                       ))}

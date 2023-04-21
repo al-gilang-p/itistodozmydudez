@@ -3,6 +3,23 @@ import { Popover } from '@headlessui/react'
 import Link from 'next/link'
 
 export default function ProjectCard({ ...props }) {
+    const handleChange = async (id, status) => {
+        const data = {
+            isCompleted: !status,
+        }
+        await fetch(`api/projects/${id}/complete`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then((response) => {
+            if (response.redirected) {
+                window.location.href = response.url
+            }
+        })
+    }
+
     return (
         <div className="flex items-center justify-between border border-black mt-3 p-3">
             <h3>{props.title}</h3>
@@ -13,6 +30,8 @@ export default function ProjectCard({ ...props }) {
                     name="check-completed"
                     id={'check' + props.id}
                     className="ml-5 mr-1"
+                    defaultChecked={props.isCompleted}
+                    onChange={(e) => handleChange(props.id, props.isCompleted)}
                 />
                 <label htmlFor={'check' + props.id}>Mark as Completed</label>
                 <Popover>

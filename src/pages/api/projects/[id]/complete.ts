@@ -9,6 +9,7 @@ export default async function handler(
 ) {
     const { method } = req
     const { id } = req.query
+    const { isCompleted } = req.body
 
     switch (method) {
         case 'POST':
@@ -18,7 +19,7 @@ export default async function handler(
                         id: Number(id),
                     },
                     data: {
-                        isCompleted: true,
+                        isCompleted: isCompleted,
                     },
                 })
                 res.redirect(301, '/')
