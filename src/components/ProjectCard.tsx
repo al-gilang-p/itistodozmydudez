@@ -41,9 +41,17 @@ export default function ProjectCard({ ...props }) {
                                 Edit
                             </Link>
                             <hr className="border-black" />
-                            <button className="hover:bg-black hover:text-white p-2">
-                                Delete
-                            </button>
+                            <form
+                                action={`api/projects/${props.id}/delete`}
+                                method="post"
+                            >
+                                <button
+                                    type="submit"
+                                    className="hover:bg-black hover:text-white p-2"
+                                >
+                                    Delete
+                                </button>
+                            </form>
                         </div>
                     </Popover.Panel>
                 </Popover>

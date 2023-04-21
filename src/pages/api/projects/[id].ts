@@ -28,17 +28,8 @@ export default async function handler(
             }
             break
 
-        case 'DELETE':
-            try {
-                const project = await prisma.project.delete({
-                    where: {
-                        id: Number(id),
-                    },
-                })
-                res.redirect(308, '/')
-            } catch (err) {
-                res.status(500).send({ error: 'failed to delete data' })
-            }
+        default:
+            res.status(500).send({ error: 'No Method Allowed' })
             break
     }
 }

@@ -16,7 +16,7 @@ export default async function page() {
 
     return (
         <>
-            <PrimaryButton url={'/project'}>
+            <PrimaryButton url={'/projects'}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"

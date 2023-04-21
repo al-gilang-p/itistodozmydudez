@@ -13,17 +13,14 @@ export default async function handler(
     switch (method) {
         case 'POST':
             try {
-                const project = await prisma.project.update({
+                const project = await prisma.project.delete({
                     where: {
                         id: Number(id),
-                    },
-                    data: {
-                        isCompleted: true,
                     },
                 })
                 res.redirect(301, '/')
             } catch (err) {
-                res.status(500).send({ error: 'failed to update data' })
+                res.status(500).send({ error: 'failed to delete data' })
             }
             break
     }
