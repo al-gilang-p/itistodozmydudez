@@ -5,7 +5,16 @@ import ProjectSection from './ProjectSection'
 const prisma = new PrismaClient()
 
 async function getProject() {
-    const projects = await prisma.project.findMany({})
+    const projects = await prisma.project.findMany({
+        orderBy: [
+            {
+                isCompleted: 'asc',
+            },
+            {
+                title: 'asc',
+            },
+        ],
+    })
     return projects
 }
 
@@ -29,7 +38,7 @@ export default async function page() {
                         clipRule="evenodd"
                     />
                 </svg>
-                New Project
+                New Task
             </PrimaryButton>
 
             <ProjectSection projects={data} />

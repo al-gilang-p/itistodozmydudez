@@ -14,7 +14,7 @@ function Check({ projects }) {
                         type="text"
                         name="search-project"
                         className="p-1 border border-black"
-                        placeholder="Search Project Here..."
+                        placeholder="Search Tasks Here..."
                         onChange={(e) => setSearchInput(e.target.value)}
                     />
                     <input
@@ -45,7 +45,7 @@ function Check({ projects }) {
                                       .includes(searchInput.toLowerCase())
                               )
                           ).length}{' '}
-                    Projects
+                    Tasks
                 </span>
             </div>
             <hr className="border-black my-3" />

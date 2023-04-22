@@ -24,7 +24,6 @@ export default function ProjectCard({ ...props }) {
         <div className="flex items-center justify-between border border-black mt-3 p-3">
             <h3>{props.title}</h3>
             <div className="flex items-center">
-                <h3 className="text-gray-500">0/0</h3>
                 <input
                     type="checkbox"
                     name="check-completed"
