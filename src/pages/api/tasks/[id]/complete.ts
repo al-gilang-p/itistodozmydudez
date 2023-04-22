@@ -8,19 +8,23 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const { method } = req
-    const { title } = req.body
+    const { id } = req.query
+    const { isCompleted } = req.body
 
     switch (method) {
         case 'POST':
             try {
-                const project = await prisma.project.create({
+                const task = await prisma.task.update({
+                    where: {
+                        id: Number(id),
+                    },
                     data: {
-                        title: title,
+                        isCompleted: isCompleted,
                     },
                 })
                 res.redirect(301, '/')
             } catch (err) {
-                res.status(500).send({ error: 'failed to post data' })
+                res.status(500).send({ error: 'failed to update data' })
             }
             break
     }

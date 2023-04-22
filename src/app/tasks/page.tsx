@@ -4,11 +4,11 @@ const Page = () => {
             <h5 className="font-bold">New Tasks</h5>
             <hr className="my-3 border-1 border-black" />
             <h5>Task Title</h5>
-            <form action={'/api/projects'} method="POST" name="projectData">
+            <form action={'/api/tasks'} method="POST" name="TaskData">
                 <input
                     type="text"
                     name="title"
-                    id="projectTitle"
+                    id="taskTitle"
                     className="border border-black my-3 p-2 w-full"
                     placeholder="Type title here..."
                     required

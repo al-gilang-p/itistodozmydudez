@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model project {
+model task {
   id          Int      @id @default(autoincrement())
   title       String   @db.VarChar(255)
   isCompleted Boolean  @default(false)

@@ -13,7 +13,7 @@ export default async function handler(
     switch (method) {
         case 'POST':
             try {
-                const project = await prisma.project.delete({
+                const task = await prisma.task.delete({
                     where: {
                         id: Number(id),
                     },

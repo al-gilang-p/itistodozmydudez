@@ -2,32 +2,32 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-const getProject = async (id) => {
-    const project = await prisma.project.findUnique({
+const getTasks = async (id) => {
+    const task = await prisma.task.findUnique({
         where: {
             id: id,
         },
     })
-    return project
+    return task
 }
 
 const Page = async ({ params }) => {
     const { id } = params
-    const project = await getProject(Number(id))
+    const task = await getTasks(Number(id))
 
     return (
         <div className="flex flex-col">
             <h5 className="font-bold">New Task</h5>
             <hr className="my-3 border-1 border-black" />
             <h5>Task Title</h5>
-            <form action={`/api/projects/${id}`} method="POST">
+            <form action={`/api/tasks/${id}`} method="POST">
                 <input
                     type="text"
                     name="title"
-                    id="projectTitle"
+                    id="taskTitle"
                     className="border border-black my-3 p-2 w-full"
                     placeholder="Type title here..."
-                    defaultValue={project?.title}
+                    defaultValue={task?.title}
                     required
                 />
                 <button

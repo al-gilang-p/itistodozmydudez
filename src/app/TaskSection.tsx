@@ -1,8 +1,8 @@
 'use client'
 import { useState } from 'react'
-import ProjectList from './ProjectList'
+import TaskList from './TaskList'
 
-function Check({ projects }) {
+function Check({ tasks }) {
     const [searchInput, setSearchInput] = useState('')
     const [isCompleted, setIsCompleted] = useState(false)
 
@@ -12,7 +12,7 @@ function Check({ projects }) {
                 <div>
                     <input
                         type="text"
-                        name="search-project"
+                        name="search-title"
                         className="p-1 border border-black"
                         placeholder="Search Tasks Here..."
                         onChange={(e) => setSearchInput(e.target.value)}
@@ -29,7 +29,7 @@ function Check({ projects }) {
                 <span className="font-semibold text-gray-500">
                     {isCompleted
                         ? Object.keys(
-                              projects.filter(
+                              tasks.filter(
                                   ({ title, isCompleted }) =>
                                       title
                                           .toLowerCase()
@@ -39,7 +39,7 @@ function Check({ projects }) {
                               )
                           ).length
                         : Object.keys(
-                              projects.filter(({ title }) =>
+                              tasks.filter(({ title }) =>
                                   title
                                       .toLowerCase()
                                       .includes(searchInput.toLowerCase())
@@ -49,8 +49,8 @@ function Check({ projects }) {
                 </span>
             </div>
             <hr className="border-black my-3" />
-            <ProjectList
-                projects={projects}
+            <TaskList
+                tasks={tasks}
                 filter={searchInput}
                 completed={isCompleted}
             />

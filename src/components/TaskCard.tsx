@@ -2,12 +2,12 @@
 import { Popover } from '@headlessui/react'
 import Link from 'next/link'
 
-export default function ProjectCard({ ...props }) {
+export default function TaskCard({ ...props }) {
     const handleChange = async (id, status) => {
         const data = {
             isCompleted: !status,
         }
-        await fetch(`api/projects/${id}/complete`, {
+        await fetch(`api/tasks/${id}/complete`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,13 +54,13 @@ export default function ProjectCard({ ...props }) {
                             <Link
                                 className="hover:bg-black hover:text-white p-2"
                                 // @ts-expect-error
-                                href={'/projects/' + props.id}
+                                href={'/tasks/' + props.id}
                             >
                                 Edit
                             </Link>
                             <hr className="border-black" />
                             <form
-                                action={`api/projects/${props.id}/delete`}
+                                action={`api/tasks/${props.id}/delete`}
                                 method="post"
                             >
                                 <button

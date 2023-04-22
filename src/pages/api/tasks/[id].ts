@@ -14,7 +14,7 @@ export default async function handler(
     switch (method) {
         case 'POST':
             try {
-                const project = await prisma.project.update({
+                const task = await prisma.task.update({
                     where: {
                         id: Number(id),
                     },

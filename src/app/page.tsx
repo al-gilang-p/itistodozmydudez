@@ -1,11 +1,11 @@
 import PrimaryButton from '../components/PrimaryButton'
 import { PrismaClient } from '@prisma/client'
-import ProjectSection from './ProjectSection'
+import TaskSection from './TaskSection'
 
 const prisma = new PrismaClient()
 
-async function getProject() {
-    const projects = await prisma.project.findMany({
+async function getTasks() {
+    const tasks = await prisma.task.findMany({
         orderBy: [
             {
                 isCompleted: 'asc',
@@ -15,17 +15,17 @@ async function getProject() {
             },
         ],
     })
-    return projects
+    return tasks
 }
 
 export default async function page() {
-    const projects = await getProject()
+    const tasks = await getTasks()
     // typescript workaround: Only plain objecs can be passed to client components from server components
-    const data = JSON.parse(JSON.stringify(projects))
+    const data = JSON.parse(JSON.stringify(tasks))
 
     return (
         <>
-            <PrimaryButton url={'/projects'}>
+            <PrimaryButton url={'/tasks'}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -41,7 +41,7 @@ export default async function page() {
                 New Task
             </PrimaryButton>
 
-            <ProjectSection projects={data} />
+            <TaskSection tasks={data} />
         </>
     )
 }
