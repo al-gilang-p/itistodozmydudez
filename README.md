@@ -39,7 +39,7 @@ This project require
 npm install
 ```
 
--   Change database connection in .env file file
+-   Change database connection in .env file
 -   Migrate prisma scheme
 
 ```
